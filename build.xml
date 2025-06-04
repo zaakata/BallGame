@@ -10,6 +10,11 @@
 <project name="Kulki" default="default" basedir=".">
     <description>Builds, tests, and runs the project Kulki.</description>
     <import file="nbproject/build-impl.xml"/>
+
+    <!-- Override default test target to run simple assertion based tests -->
+    <target name="test" depends="compile-test">
+        <java classname="kulki.GamePanelTest" classpath="${run.test.classpath}" failonerror="true"/>
+    </target>
     <!--
 
     There exist several targets which are by default empty and which can be 
