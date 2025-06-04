@@ -29,9 +29,10 @@ class GamePanel extends JPanel implements ActionListener {
     private int paddleX = 250;
     private int score = 0;
     private double speedMultiplier = 1.1;
+    private Timer timer;
 
     public GamePanel() {
-        Timer timer = new Timer(10, this);
+        timer = new Timer(10, this);
         timer.start();
         addMouseMotionListener(new MouseAdapter() {
             @Override
@@ -73,5 +74,16 @@ class GamePanel extends JPanel implements ActionListener {
         }
 
         repaint();
+    }
+
+    // Methods below are package-private to facilitate unit testing
+    void stopTimer() {
+        if (timer != null) {
+            timer.stop();
+        }
+    }
+
+    int getScore() {
+        return score;
     }
 }
